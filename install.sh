@@ -107,7 +107,7 @@ function start_termux11() {
 
 gamepath="/storage/emulated/0/Download/Xbox/flat2.iso"
 function iso_path() {
-    Write "Current game path: $gamepath" "Cyan"
+    WriteLine "Current game path: $gamepath" "Cyan"
     WriteLine "  1. Edit path"
     WriteLine "  2. Cancel"
     read j
@@ -122,6 +122,10 @@ function iso_path() {
     esac
     
     WriteLine "Selected path: $gamepath" "Green"
+    
+    sleep 0.5
+    
+    menu
 }
 
 function drivers() {
@@ -130,6 +134,12 @@ function drivers() {
 
 function start_xemu() {
     WriteLine "xemu -dvd_path $gamepath" "White"
+    
+    WriteLine "XEMU STARTED!" "Yellow"
+    
+    sleep 0.5
+    
+    menu
 }
 
 function menu () {
