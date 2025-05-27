@@ -118,7 +118,7 @@ function iso_path() {
     case "$j" in
     1)
       read -e -p "Current: " -i "$gamepath" gamepath
-      echo "path=$gamepath" > $filepath
+      echo "path=$gamepath" > "$filepath"
     ;;
     *)
         menu
