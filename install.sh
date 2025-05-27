@@ -116,6 +116,7 @@ function iso_path() {
     case "$j" in
     1)
       read -e -p "Current: " -i "$gamepath" gamepath
+      echo "path=$gamepath" > $filepath
     ;;
     *)
         menu
@@ -178,7 +179,7 @@ function menu () {
 
 function user_path() {
     if [ ! -f "$filepath" ]; then
-        touch "$filepath"    # Создать файл, если его нет
+        touch "$filepath"
         echo "path=$gamepath" > "$filepath"
     else
         source "$filepath"
