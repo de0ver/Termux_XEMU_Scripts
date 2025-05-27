@@ -1,6 +1,8 @@
 #!/bin/bash
 
 useColor="true"
+gamepath="/storage/emulated/0/Download/Xbox/flat2.iso"
+filepath="gamepath.txt"
 
 function Color () { #https://habr.com/ru/companies/first/articles/672464/
 
@@ -105,7 +107,6 @@ function start_termux11() {
     menu
 }
 
-gamepath="/storage/emulated/0/Download/Xbox/flat2.iso"
 function iso_path() {
     WriteLine "Current game path: $gamepath" "Cyan"
     WriteLine "  1. Edit path"
@@ -133,7 +134,7 @@ function drivers() {
 }
 
 function start_xemu() {
-    WriteLine "xemu -dvd_path $gamepath" "White"
+    xemu -dvd_path "$gamepath"
     
     WriteLine "XEMU STARTED!" "Yellow"
     
@@ -175,7 +176,20 @@ function menu () {
   esac
 }
 
+function user_path() {
+    if [ ! -f "$filepath" ]; then
+        touch "$filepath"    # Создать файл, если его нет
+        echo "path=$gamepath" > "$filepath"
+    else
+        source "$filepath"
+        gamepath="$path"
+    fi
+}
+
 function main() {
+
+    user_path
+    
     #packages
     WriteLine "Installing packages..." "Blue"
 
