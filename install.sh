@@ -1,5 +1,7 @@
 #!/bin/bash
 
+rm ~/xemu
+
 useColor="true"
 gamepath="/storage/emulated/0/Download/Xbox/flat2.iso"
 filepath="gamepath.txt"
